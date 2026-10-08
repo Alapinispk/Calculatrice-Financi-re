@@ -49,4 +49,4 @@ Aucune dépendance lourde ni installation de serveur n'est requise.
 
 1. **Cloner le dépôt :**
    ```bash
-   git clone [https://github.com/VOTRE_PSEUDO/simulateur-epargne.git](https://github.com/VOTRE_PSEUDO/simulateur-epargne.git)
+   git clone [https://alapinispk.github.io/Calculatrice-Financi-re/]
