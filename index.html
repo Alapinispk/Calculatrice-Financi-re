@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulateur d'Épargne & Calculatrice d'Intérêts</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <div class="container">
+    <header class="app-header">
+      <h1>Simulateur d'Épargne</h1>
+      <p>Calculez la croissance de votre capital grâce aux intérêts composés</p>
+    </header>
+
+    <div class="app-layout">
+      <!-- Formulaire de saisie (Sidebar à gauche) -->
+      <aside class="sidebar card">
+        <h2>Paramètres</h2>
+        <form id="calculator-form">
+          
+          <div class="input-group">
+            <label for="currency">Devise</label>
+            <select id="currency">
+              <option value="EUR" data-symbol="€">Euro (€)</option>
+              <option value="USD" data-symbol="$">Dollar ($)</option>
+              <option value="NGN" data-symbol="₦">Naira (₦)</option>
+              <option value="XOF" data-symbol="FCFA" selected>Franc CFA (FCFA)</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="initial-capital">Capital initial (<span class="curr-symbol">FCFA</span>)</label>
+            <input type="number" id="initial-capital" value="500000" min="0" step="1000" required>
+          </div>
+
+          <div class="input-group">
+            <label for="monthly-deposit">Versement mensuel (<span class="curr-symbol">FCFA</span>)</label>
+            <input type="number" id="monthly-deposit" value="50000" min="0" step="1000" required>
+          </div>
+
+          <div class="input-group">
+            <label for="interest-rate">Taux d'intérêt annuel (%)</label>
+            <input type="number" id="interest-rate" value="6" min="0" max="100" step="0.1" required>
+          </div>
+
+          <div class="input-group">
+            <label for="duration">Durée (années)</label>
+            <input type="number" id="duration" value="10" min="1" max="50" required>
+          </div>
+
+          <div class="btn-group">
+            <button type="submit" class="btn btn-primary">Calculer</button>
+            <button type="button" id="export-csv-btn" class="btn btn-secondary">-Exporter CSV-</button>
+          </div>
+        </form>
+      </aside>
+
+      <!-- Panneau de résultats et graphique (À droite sur Desktop) -->
+      <main class="results-layout">
+        <!-- Chiffres Clés (KPI) -->
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <span>Capital Final</span>
+            <strong id="final-balance">0 FCFA</strong>
+          </div>
+          <div class="kpi-card">
+            <span>Total Déposé</span>
+            <strong id="total-deposits">0 FCFA</strong>
+          </div>
+          <div class="kpi-card highlight">
+            <span>Intérêts Gagnés</span>
+            <strong id="total-interest">0 FCFA</strong>
+          </div>
+        </div>
+
+        <!-- Zone du Graphique -->
+        <div class="card chart-card">
+          <h2>Évolution du Capital</h2>
+          <div class="chart-container">
+            <canvas id="savingsChart"></canvas>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <header class="app-header">
+      <p>Realisé par <a href="https://github.com/Alapinispk/Calculatrice-Financière" target="_blank">Spk Technologie</a>
+      </p>
+    </header>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
